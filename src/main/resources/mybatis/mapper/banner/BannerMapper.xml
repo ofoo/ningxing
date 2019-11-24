@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guoguo.ningxing.dao.banner.BannerDao">
+    
+    <resultMap id="BannerResult" type="Banner">
+        <result property="id" column="id"/>
+        <result property="url" column="url"/>
+        <result property="addTime" column="add_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="ningxing_banner_columns">
+		ningxing_banner.id,
+		ningxing_banner.url,
+		ningxing_banner.add_time,
+		ningxing_banner.update_time
+	</sql>
+
+    <sql id="ningxing_banner_properties">
+		#{id},
+		#{url},
+		#{addTime},
+		#{updateTime}
+	</sql>
+
+    <insert id="addBanner">
+        insert into ningxing_banner(<include refid="ningxing_banner_columns"/>)
+        value(<include refid="ningxing_banner_properties"/>)
+    </insert>
+
+    <update id="updateBannerById">
+        update ningxing_banner set
+        url=#{url},
+        update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteBannerById">
+        delete from ningxing_banner where id=#{id}
+    </delete>
+
+    <select id="getBannerList" resultMap="BannerResult">
+        select <include refid="ningxing_banner_columns"/>
+        from ningxing_banner order by id desc
+    </select>
+
+    <select id="getBannerById" resultMap="BannerResult">
+        select <include refid="ningxing_banner_columns"/>
+        from ningxing_banner where id=#{id}
+    </select>
+
+    <select id="getBanner" resultMap="BannerResult">
+        select <include refid="ningxing_banner_columns"/>
+        from ningxing_banner limit 1
+    </select>
+</mapper>

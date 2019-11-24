@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guoguo.ningxing.dao.record.RecordDao">
+    
+    <resultMap id="RecordResult" type="Record">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="type" column="type"/>
+        <result property="addTime" column="add_time"/>
+    </resultMap>
+
+    <sql id="ningxing_record_columns">
+		ningxing_record.id,
+		ningxing_record.count,
+		ningxing_record.type,
+		ningxing_record.add_time
+	</sql>
+
+    <sql id="ningxing_record_properties">
+		#{id},
+		#{count},
+		#{type},
+		#{addTime}
+	</sql>
+
+    <insert id="addRecord">
+        insert into ningxing_record(<include refid="ningxing_record_columns"/>)
+        value(<include refid="ningxing_record_properties"/>)
+    </insert>
+
+    <update id="updateRecordById">
+        update ningxing_record set
+        `count`=#{count}
+        where id=#{id}
+    </update>
+
+    <select id="getRecordByAddTime" resultMap="RecordResult">
+        select <include refid="ningxing_record_columns"/>
+        from ningxing_record where DATE_FORMAT(add_time,'%Y-%m-%d')=DATE_FORMAT(#{addTime},'%Y-%m-%d')
+    </select>
+</mapper>

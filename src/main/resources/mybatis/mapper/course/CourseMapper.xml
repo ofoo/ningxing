@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guoguo.ningxing.dao.course.CourseDao">
+
+    <resultMap id="CourseResult" type="Course">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+        <result property="addTime" column="add_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="ningxing_course_columns">
+		ningxing_course.id,
+		ningxing_course.name,
+		ningxing_course.url,
+		ningxing_course.add_time,
+		ningxing_course.update_time
+	</sql>
+
+    <sql id="ningxing_course_properties">
+		#{id},
+		#{name},
+		#{url},
+		#{addTime},
+		#{updateTime}
+	</sql>
+
+    <insert id="addCourse">
+        insert into ningxing_course(<include refid="ningxing_course_columns"/>)
+        value(<include refid="ningxing_course_properties"/>)
+    </insert>
+
+    <update id="updateCourseById">
+        update ningxing_course set
+        `name`=#{name},
+        url=#{url},
+        update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteCourseById">
+        delete from ningxing_course where id=#{id}
+    </delete>
+
+    <delete id="deleteCourseByIds">
+        delete from ningxing_course where id in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+        #{id}
+        </foreach>
+    </delete>
+
+    <select id="getCourseList" resultMap="CourseResult">
+        select <include refid="ningxing_course_columns"/>
+        from ningxing_course
+        <where>
+            <if test="name!=null and name!=''">
+            `name` LIKE CONCAT('%',#{name},'%')
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="getCourseById" resultMap="CourseResult">
+        select <include refid="ningxing_course_columns"/>
+        from ningxing_course where id=#{id}
+    </select>
+
+    <select id="getCourseByNum" resultMap="CourseResult">
+        select <include refid="ningxing_course_columns"/>
+        from ningxing_course order by id desc limit #{value}
+    </select>
+</mapper>

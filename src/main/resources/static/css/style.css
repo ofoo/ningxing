@@ -1,0 +1,478 @@
+/*首页*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    /*text-decoration: underline;*/
+    color: blue;
+}
+
+body {
+    background-color: #F8F8F8;
+}
+
+.header {
+    padding: 10px;
+    height: 50px;
+    position: fixed;
+    border-bottom: 1px solid #D8D8D8;
+    width: 100%;
+}
+
+.header .logo {
+    float: left;
+    text-align: right;
+    position: absolute;
+    left: 80px;
+}
+
+.logo .img {
+    height: 50px;
+}
+
+.header .nav {
+    float: right;
+    position: absolute;
+    right: 80px;
+    line-height: 50px;
+}
+
+.nav a {
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.middle {
+    padding-top: 70px;
+}
+
+.banner img {
+    width: 100%;
+    height: 400px;
+    vertical-align: bottom;
+}
+
+.middle .content {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.middle .listContent {
+    width: 80%;
+    margin: 30px auto 80px auto;
+}
+
+.listCard:nth-of-type(1){
+    border-top: none;
+}
+
+.listCard img {
+    height: 150px;
+    float: left;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+}
+
+.listCard {
+    border-top: 1px solid #D8D8D8;
+    padding: 20px 0;
+}
+
+.listCard .info {
+    float: left;
+    margin-left: 20px;
+    width: 70%;
+    overflow-y: hidden;
+    line-height: 30px;
+    height: 130px;
+}
+
+.listCard h2 {
+    color: #333333;
+}
+
+.listCard p {
+    margin-top: 5px;
+    color: #333333;
+    /*width: 70%;*/
+    /*height: 150px;*/
+}
+
+.card {
+    margin-top: 50px;
+    /*background-color: yellow;*/
+}
+
+.card .title {
+    margin-bottom: 30px;
+    font-size: 45px;
+    text-align: center;
+}
+
+.card .img {
+    vertical-align: bottom;
+    height: 400px;
+    width: 600px;
+}
+
+.card img {
+    border: 1px solid #D8D8D8;
+}
+
+.card .text {
+    font-size: 20px;
+    line-height: 35px;
+    margin-top: -9px;
+    text-align: justify;
+    text-indent: 2em;
+}
+
+.card .list {
+    margin: 0;
+}
+
+.card .list .item {
+    margin: 0 20px;
+    width: 21.70%;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.footer {
+    border-top: 1px solid #D8D8D8;
+    height: 70px;
+}
+
+.footer .text {
+    text-align: center;
+    line-height: 70px;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.floatClear::after {
+    content: "";
+    visibility: hidden;
+    height: 0px;
+    display: block;
+    clear: both;
+}
+
+.floatClear {
+    zoom: 1;
+}
+
+.marginLeft {
+    margin-left: 10px;
+}
+
+.marginRight {
+    margin-right: 10px;
+}
+
+.backgroundColor {
+    border: 1px solid #D8D8D8;
+}
+
+/*登录页面*/
+input[type=text], input[type=password] {
+    font-size: 16px;
+    outline: none;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    line-height: 40px;
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    display: inline-block;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus {
+    border: 1px solid #4CAF50;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    color: #4CAF50;
+    background-color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: inline-block
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    border: 1px solid white;
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type=button].active {
+    border: 1px solid white;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.block {
+    display: block !important;
+}
+
+.widthFull {
+    width: 100% !important;
+}
+
+input[type=file] {
+    outline: none;
+}
+
+textarea {
+    font-size: 16px;
+    height: 150px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
+    resize: none;
+    display: inline-block;
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+}
+
+select {
+    font-size: 16px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid #D8D8D8;
+    height: 40px;
+    line-height: 40px;
+}
+
+.main {
+    padding: 20px;
+    border: 1px solid #D8D8D8;
+    width: 25%;
+    margin: 10% auto 0 auto;
+}
+
+.main .title {
+    margin-bottom: 30px;
+    font-size: 45px;
+    text-align: center;
+}
+
+.main .input {
+    margin-bottom: 30px;
+}
+
+/*后台列表页面*/
+.adminHeader {
+    padding: 10px;
+    height: 50px;
+    border-bottom: 1px solid #D8D8D8;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.adminHeader .adminLogo {
+    float: left;
+    text-align: right;
+    position: absolute;
+    left: 80px;
+}
+
+.adminLogo .adminImg {
+    height: 50px;
+}
+
+.adminHeader .adminNav {
+    position: absolute;
+    left: 240px;
+    line-height: 50px;
+}
+
+.adminNav .adminText, .adminButton .adminText {
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.adminHeader .adminButton {
+    position: absolute;
+    right: 100px;
+    line-height: 50px;
+}
+
+.adminHeader .adminTitle {
+    position: absolute;
+    left: 230px;
+    line-height: 50px;
+}
+
+.adminTitle .adminText {
+    font-size: 20px;
+}
+
+.adminContent .adminLeft {
+    width: 15%;
+    border-right: 1px solid #D8D8D8;
+    position: fixed;
+    height: 100%;
+    top: 70px;
+    z-index: 200;
+}
+
+.adminLeft .adminText {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    padding-top: 20px;
+}
+
+.adminContent .adminRight {
+    width: 85%;
+    padding: 20px;
+    position: absolute;
+    left: 15%;
+    box-sizing: border-box;
+    top: 70px;
+}
+
+.pageData {
+    float: right;
+}
+
+.pageData .current, .paging .current {
+    border: 1px solid white;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pageInfo {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+
+.panel .panelHeader {
+    /*margin-bottom: 30px;*/
+    /*border: 1px solid #D8D8D8;*/
+    margin: 20px;
+}
+
+.panel .panelBody {
+    /*border: 1px solid #D8D8D8;*/
+    margin: 20px;
+    overflow: auto;
+}
+
+.panel .panelFooter {
+    margin: 20px;
+}
+
+.marginBottom20 {
+    margin-bottom: 20px;
+}
+
+/*后台添加页面*/
+.panelBody .formInput {
+    margin-bottom: 30px;
+}
+
+.file {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.file input {
+    display: inline-block;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 84px;
+}
+
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+
+.imgPreview {
+    display: block;
+    margin-top: 10px;
+    border: 1px solid #D8D8D8;
+}
+
+.upload {
+    display: inline-block;
+}
+
+.uploadFile {
+
+}
+
+.uploadBtn, .uploadFile {
+    margin-top: 20px;
+}
+
+/*公司介绍、公司管理页面*/
+.panelBody .formTextarea {
+    margin-bottom: 30px;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.hintText {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
+
+.paging {
+    text-align: center;
+    margin-top: 50px;
+}

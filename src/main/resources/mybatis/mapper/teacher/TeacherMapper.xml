@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guoguo.ningxing.dao.teacher.TeacherDao">
+
+    <resultMap id="TeacherResult" type="Teacher">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+        <result property="addTime" column="add_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="ningxing_teacher_columns">
+		ningxing_teacher.id,
+		ningxing_teacher.name,
+		ningxing_teacher.url,
+		ningxing_teacher.add_time,
+		ningxing_teacher.update_time
+	</sql>
+
+    <sql id="ningxing_teacher_properties">
+		#{id},
+		#{name},
+		#{url},
+		#{addTime},
+		#{updateTime}
+	</sql>
+
+    <insert id="addTeacher">
+        insert into ningxing_teacher(<include refid="ningxing_teacher_columns"/>)
+        value(<include refid="ningxing_teacher_properties"/>)
+    </insert>
+
+    <update id="updateTeacherById">
+        update ningxing_teacher set
+        `name`=#{name},
+        url=#{url},
+        update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteTeacherById">
+        delete from ningxing_teacher where id=#{id}
+    </delete>
+
+    <delete id="deleteTeacherByIds">
+        delete from ningxing_teacher where id in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="getTeacherList" resultMap="TeacherResult">
+        select <include refid="ningxing_teacher_columns"/>
+        from ningxing_teacher
+        <where>
+            <if test="name!=null and name!=''">
+                `name` LIKE CONCAT('%',#{name},'%')
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="getTeacherById" resultMap="TeacherResult">
+        select <include refid="ningxing_teacher_columns"/>
+        from ningxing_teacher where id=#{id}
+    </select>
+
+    <select id="getTeacherByNum" resultMap="TeacherResult">
+        select <include refid="ningxing_teacher_columns"/>
+        from ningxing_teacher order by id desc limit #{value}
+    </select>
+</mapper>

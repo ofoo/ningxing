@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guoguo.ningxing.dao.company.CompanyDao">
+
+    <resultMap id="CompanyResult" type="Company">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="type" column="type"/>
+        <result property="addTime" column="add_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="ningxing_company_columns">
+		ningxing_company.id,
+		ningxing_company.content,
+		ningxing_company.url,
+		ningxing_company.type,
+		ningxing_company.add_time,
+		ningxing_company.update_time
+	</sql>
+
+    <sql id="ningxing_company_properties">
+		#{id},
+		#{content},
+		#{url},
+		#{type},
+		#{addTime},
+		#{updateTime}
+	</sql>
+
+    <insert id="addCompany">
+        insert into ningxing_company(<include refid="ningxing_company_columns"/>)
+        value(<include refid="ningxing_company_properties"/>)
+    </insert>
+
+    <update id="updateCompanyById">
+        update ningxing_company set
+        content=#{content},
+        `type`=#{type},
+        url=#{url},
+        update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteCompanyById">
+        delete from ningxing_company where id=#{id}
+    </delete>
+
+    <select id="getCompanyList" resultMap="CompanyResult">
+        select <include refid="ningxing_company_columns"/>
+        from ningxing_company order by id desc
+    </select>
+
+    <select id="getCompanyById" resultMap="CompanyResult">
+        select <include refid="ningxing_company_columns"/>
+        from ningxing_company where id=#{id}
+    </select>
+
+    <select id="getCompany" resultMap="CompanyResult">
+        select <include refid="ningxing_company_columns"/>
+        from ningxing_company where `type`=#{value} limit 1
+    </select>
+</mapper>
