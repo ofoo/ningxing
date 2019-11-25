@@ -29,7 +29,6 @@ public class BannerService {
         bannerDao.addBanner(banner);
     }
 
-    @Transactional
     public void updateBannerById(Banner banner) {
         banner.setUpdateTime(new Date());
         bannerDao.updateBannerById(banner);
